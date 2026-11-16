@@ -4,7 +4,6 @@
 **Disciplina:** DSAIA — Desenvolvimento de Software Assistido por Inteligência Artificial  
 **Integrantes da Dupla:**
 - Pietro Henrique Camargo Siqueira
-- Queren Hapuque
 
 ---
 
