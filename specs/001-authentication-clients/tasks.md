@@ -16,8 +16,8 @@
 
 **Purpose**: Initialize the Next.js, React, TypeScript, and Tailwind application.
 
-- [ ] T001 Initialize the Next.js App Router project with TypeScript and Tailwind CSS in `package.json`, `next.config.ts`, `tsconfig.json`, `postcss.config.*`, and `app/globals.css`
-- [ ] T002 [P] Add the project scripts and dependencies for Next.js, React, Tailwind CSS, and the Supabase client in `package.json`
+- [x] T001 Initialize the Next.js App Router project with TypeScript and Tailwind CSS in `package.json`, `next.config.ts`, `tsconfig.json`, `postcss.config.*`, and `app/globals.css`
+- [x] T002 [P] Add the project scripts and dependencies for Next.js, React, Tailwind CSS, and the Supabase client in `package.json`
 - [ ] T003 [P] Create the base responsive application layout in `app/layout.tsx` and global design styles in `app/globals.css`
 - [ ] T004 [P] Add public environment variable names and secret-safe local configuration guidance in `.env.example` and `.gitignore`
 - [ ] T005 [P] Create the initial client TypeScript shape in `types/client.ts`, aligned with `data-model.md` Client fields
