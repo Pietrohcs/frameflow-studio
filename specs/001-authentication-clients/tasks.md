@@ -21,7 +21,7 @@
 - [x] T003 [P] Create the base responsive application layout in `app/layout.tsx` and global design styles in `app/globals.css`
 - [x] T004 [P] Add public environment variable names and secret-safe local configuration guidance in `.env.example` and `.gitignore`
 - [x] T005 [P] Create the initial client TypeScript shape in `types/client.ts`, aligned with `data-model.md` Client fields
-- [ ] T006 [P] Create the Supabase directory and migration location structure in `supabase/migrations/.gitkeep`
+- [x] T006 [P] Create the Supabase directory and migration location structure in `supabase/migrations/.gitkeep`
 
 ---
 
@@ -31,10 +31,10 @@
 
 **⚠️ CRITICAL**: No user story implementation can begin until this phase is complete.
 
-- [ ] T007 Create the browser Supabase client in `lib/supabase/client.ts` using only public environment variables
-- [ ] T008 [P] Create server-side Supabase session helpers in `lib/supabase/server.ts` for authenticated route checks
-- [ ] T009 Create the reviewed `clients` table migration, including `Client.id`, `Client.user_id`, `Client.full_name`, `Client.email`, `Client.phone`, `Client.observations`, `Client.created_at`, and `Client.updated_at` constraints from `data-model.md`, in `supabase/migrations/<timestamp>_create_clients.sql`
-- [ ] T010 Add select, insert, update, and delete RLS policies restricted to `auth.uid() = user_id` for the migration in `supabase/migrations/<timestamp>_create_clients.sql`
+- [x] T007 Create the browser Supabase client in `lib/supabase/client.ts` using only public environment variables
+- [x] T008 [P] Create server-side Supabase session helpers in `lib/supabase/server.ts` for authenticated route checks
+- [x] T009 Create the reviewed `clients` table migration, including `Client.id`, `Client.user_id`, `Client.full_name`, `Client.email`, `Client.phone`, `Client.observations`, `Client.created_at`, and `Client.updated_at` constraints from `data-model.md`, in `supabase/migrations/<timestamp>_create_clients.sql`
+- [x] T010 Add select, insert, update, and delete RLS policies restricted to `auth.uid() = user_id` for the migration in `supabase/migrations/<timestamp>_create_clients.sql`
 - [ ] T011 [P] Add the shared authenticated-route redirect behavior for missing or expired sessions in `lib/supabase/server.ts`
 - [ ] T012 [P] Add a reusable user-facing error/validation feedback component in `components/shared/FeedbackMessage.tsx`
 
