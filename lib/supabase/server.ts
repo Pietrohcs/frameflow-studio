@@ -1,4 +1,5 @@
 import { createServerClient } from "@supabase/ssr";
+import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
 export async function createSupabaseServerClient() {
@@ -39,6 +40,16 @@ export async function getAuthenticatedUser() {
 
   if (error || !user) {
     return null;
+  }
+
+  return user;
+}
+
+export async function requireAuthenticatedUser(loginPath = "/login") {
+  const user = await getAuthenticatedUser();
+
+  if (!user) {
+    redirect(loginPath);
   }
 
   return user;

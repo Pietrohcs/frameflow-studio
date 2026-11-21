@@ -35,7 +35,7 @@
 - [x] T008 [P] Create server-side Supabase session helpers in `lib/supabase/server.ts` for authenticated route checks
 - [x] T009 Create the reviewed `clients` table migration, including `Client.id`, `Client.user_id`, `Client.full_name`, `Client.email`, `Client.phone`, `Client.observations`, `Client.created_at`, and `Client.updated_at` constraints from `data-model.md`, in `supabase/migrations/<timestamp>_create_clients.sql`
 - [x] T010 Add select, insert, update, and delete RLS policies restricted to `auth.uid() = user_id` for the migration in `supabase/migrations/<timestamp>_create_clients.sql`
-- [ ] T011 [P] Add the shared authenticated-route redirect behavior for missing or expired sessions in `lib/supabase/server.ts`
+- [x] T011 [P] Add the shared authenticated-route redirect behavior for missing or expired sessions in `lib/supabase/server.ts`
 - [ ] T012 [P] Add a reusable user-facing error/validation feedback component in `components/shared/FeedbackMessage.tsx`
 
 **Checkpoint**: Foundation ready. The Supabase schema, RLS, environment configuration, and route-session helpers must be reviewed before user-story work begins.
