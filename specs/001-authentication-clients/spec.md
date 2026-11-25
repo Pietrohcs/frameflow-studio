@@ -61,6 +61,57 @@ Como fotógrafo autenticado, quero listar, cadastrar, editar e excluir meus clie
 
 ---
 
+### User Story 4 - Gerenciar trabalhos fotográficos (Priority: P1)
+
+Como fotógrafo autenticado, quero criar, listar, editar e excluir trabalhos fotográficos associados aos meus clientes, para organizar as demandas da minha rotina dentro da plataforma.
+
+**Why this priority**: A gestão de trabalhos é uma capacidade central da especificação desta iteração e permite relacionar os atendimentos aos clientes do fotógrafo.
+
+**Independent Test**: Com uma sessão ativa, cadastrar um trabalho vinculado a um cliente próprio, localizar o registro na lista, editar seus dados e excluí-lo após confirmação.
+
+**Acceptance Scenarios**:
+
+1. **Given** que um fotógrafo está autenticado, **When** abre a área de trabalhos, **Then** vê somente os trabalhos associados à própria conta.
+2. **Given** que o fotógrafo possui um cliente próprio, **When** cadastra um trabalho informando uma descrição obrigatória e seleciona esse cliente, **Then** o trabalho é criado e aparece na sua lista.
+3. **Given** que existe um trabalho próprio na lista, **When** o fotógrafo seleciona editar e salva dados válidos, **Then** as informações atualizadas são exibidas.
+4. **Given** que existe um trabalho próprio na lista, **When** solicita a exclusão e confirma, **Then** o trabalho deixa de aparecer na lista.
+
+---
+
+### User Story 5 - Agendar sessões e gerenciar consultas (Priority: P1)
+
+Como fotógrafo autenticado, quero cadastrar, listar, editar e excluir sessões ou consultas vinculadas aos meus clientes e trabalhos, para organizar os compromissos da minha rotina.
+
+**Why this priority**: O agendamento é parte contemplada desta iteração e depende do vínculo seguro com o fotógrafo, seus clientes e seus trabalhos.
+
+**Independent Test**: Com uma sessão ativa, cadastrar uma sessão vinculada a um cliente e a um trabalho próprios, listar, editar e excluir o agendamento.
+
+**Acceptance Scenarios**:
+
+1. **Given** que um fotógrafo está autenticado, **When** abre a área de agendamentos, **Then** vê somente as sessões associadas à própria conta.
+2. **Given** que o fotógrafo possui um cliente e um trabalho próprios, **When** cadastra uma sessão informando data, horário e vínculo válido, **Then** a sessão é criada e aparece na sua agenda.
+3. **Given** que existe uma sessão própria, **When** o fotógrafo altera data, horário ou vínculo e salva dados válidos, **Then** os dados atualizados são exibidos.
+4. **Given** que existe uma sessão própria, **When** o fotógrafo solicita a exclusão e confirma, **Then** a sessão deixa de aparecer na lista ou agenda.
+
+---
+
+### User Story 6 - Acompanhar o status dos trabalhos fotográficos (Priority: P1)
+
+Como fotógrafo autenticado, quero visualizar e atualizar o status dos meus trabalhos fotográficos, para acompanhar o andamento de cada demanda.
+
+**Why this priority**: O rastreamento do status permite controlar o fluxo operacional dos trabalhos contemplados nesta especificação.
+
+**Independent Test**: Com uma sessão ativa, criar um trabalho, alterar seu status por meio dos estados permitidos e verificar que o novo estado é exibido na listagem e nos detalhes.
+
+**Acceptance Scenarios**:
+
+1. **Given** que um fotógrafo possui um trabalho próprio, **When** abre seus detalhes, **Then** visualiza o status atual do trabalho.
+2. **Given** que existe um trabalho próprio, **When** o fotógrafo seleciona um estado válido, **Then** o status é atualizado e exibido imediatamente na tela.
+3. **Given** que um usuário tenta informar um estado não permitido, **When** salva a alteração, **Then** o sistema impede a atualização e apresenta uma mensagem clara.
+4. **Given** que um fotógrafo autenticado tenta alterar o trabalho de outra conta, **When** solicita a atualização, **Then** a operação é negada.
+
+---
+
 ### Edge Cases
 
 - Tentativa de cadastro com e-mail já utilizado: o sistema deve informar que a conta não pode ser criada com esse e-mail.
@@ -70,6 +121,13 @@ Como fotógrafo autenticado, quero listar, cadastrar, editar e excluir meus clie
 - Sessão expirada enquanto o usuário está em uma rota privada: o usuário deve ser direcionado ao login e não deve visualizar dados privados.
 - Exclusão cancelada pelo usuário: nenhum dado deve ser alterado.
 - Dados opcionais vazios no cadastro ou edição: o cliente deve continuar válido quando nome completo estiver preenchido.
+- Tentativa de cadastrar ou editar um trabalho sem descrição: o sistema deve impedir a operação e indicar o campo obrigatório.
+- Tentativa de vincular um trabalho a um cliente que não pertence ao fotógrafo autenticado: o sistema deve negar o vínculo.
+- Tentativa de cadastrar uma sessão sem data, horário ou vínculo válido: o sistema deve impedir a operação e indicar os campos obrigatórios.
+- Tentativa de vincular uma sessão a um cliente ou trabalho que não pertence ao fotógrafo autenticado: o sistema deve negar o vínculo.
+- Tentativa de atualizar o status para um estado não permitido: o sistema deve impedir a alteração.
+- Tentativa de editar ou excluir trabalho ou sessão pertencente a outra conta: o sistema deve negar a operação.
+- Exclusão cancelada pelo usuário: nenhum trabalho ou sessão deve ser alterado.
 
 ## Requirements *(mandatory)*
 
@@ -91,11 +149,26 @@ Como fotógrafo autenticado, quero listar, cadastrar, editar e excluir meus clie
 - **FR-014**: The system MUST associate every client record with the authenticated photographer's user identifier.
 - **FR-015**: The system MUST enforce Row Level Security so a photographer cannot read, create, update, or delete records belonging to another account.
 - **FR-016**: The system MUST present clear feedback for validation errors and unsuccessful authentication or client operations.
+- **FR-017**: The system MUST allow an authenticated photographer to create, list, edit, and delete their own photographic works.
+- **FR-018**: The system MUST require a description for every photographic work.
+- **FR-019**: The system MUST associate every photographic work with the authenticated photographer and may associate it with one of that photographer's clients.
+- **FR-020**: The system MUST allow an authenticated photographer to create, list, edit, and delete sessions or appointments associated with their own account.
+- **FR-021**: The system MUST require a valid date, time, and applicable client or work relationship for each session or appointment.
+- **FR-022**: The system MUST prevent a photographer from associating works or sessions with clients or works belonging to another account.
+- **FR-023**: O sistema DEVE rastrear o status de cada trabalho fotográfico.
+- **FR-024**: O sistema DEVE permitir somente os seguintes estados para trabalhos fotográficos: Solicitado, Agendado, Em Andamento, Concluído, Entregue e Cancelado.
+- **FR-025**: O sistema DEVE registrar o status atual de cada trabalho fotográfico e exibí-lo na lista e nos detalhes do trabalho.
+- **FR-026**: O sistema DEVE aplicar segurança por nível de registro (RLS) a trabalhos e sessões, impedindo que um fotógrafo leia, crie, altere ou exclua registros pertencentes a outra conta.
+- **FR-027**: O sistema DEVE preservar trabalhos e sessões sem alterações quando a exclusão for cancelada.
+- **FR-028**: O sistema DEVE apresentar feedback claro para erros de validação e operações malsucedidas relacionadas a trabalhos, sessões e status.
 
 ### Key Entities *(include if feature involves data)*
 
-- **Photographer Account**: Represents an authenticated user of the platform; owns client records and is uniquely identified by the authentication system.
-- **Client**: Represents a person managed by one photographer; includes full name, optional email, optional phone, and optional observations, and belongs exclusively to the owning photographer.
+- **Photographer Account**: Representa um usuário autenticado da plataforma; possui clientes, trabalhos e sessões e é identificado exclusivamente pelo sistema de autenticação.
+- **Client**: Representa uma pessoa gerenciada por um fotógrafo; inclui nome completo, e-mail opcional, telefone opcional e observações opcionais e pertence exclusivamente ao fotógrafo proprietário.
+- **Photographic Work**: Representa uma demanda fotográfica gerenciada por um fotógrafo; inclui uma descrição obrigatória, pertence exclusivamente ao fotógrafo proprietário, pode estar associado a um dos seus clientes e possui um dos estados permitidos: Solicitado, Agendado, Em Andamento, Concluído, Entregue ou Cancelado.
+- **Session / Appointment**: Representa uma sessão fotográfica ou consulta agendada; inclui data, horário, fotógrafo proprietário e vínculos aplicáveis ao cliente e ao trabalho fotográfico do fotógrafo.
+- **Work Status**: Representa o estágio atual de um trabalho fotográfico e deve utilizar somente um dos estados definidos nesta especificação.
 
 ## Success Criteria *(mandatory)*
 
@@ -109,6 +182,11 @@ Como fotógrafo autenticado, quero listar, cadastrar, editar e excluir meus clie
 - **SC-006**: 100% of attempts to view or modify another photographer's client records are denied in security tests.
 - **SC-007**: 95% of test users successfully complete create, edit, and confirmed-delete flows without assistance.
 - **SC-008**: 100% of client records require a full name and never expose optional fields as mandatory.
+- **SC-009**: 100% of tested valid photographic works appear in the owner's work list and remain isolated from other photographers.
+- **SC-010**: 100% of tested sessions are associated only with valid data owned by the authenticated photographer.
+- **SC-011**: 100% of status changes use an allowed state and are displayed in the work list and details.
+- **SC-012**: 100% of attempts to access, link, edit, or delete another photographer's work or session are denied in security tests.
+- **SC-013**: 95% of test users successfully complete create, edit, and confirmed-delete flows for works and sessions without assistance.
 
 ## Assumptions
 
@@ -118,11 +196,11 @@ Como fotógrafo autenticado, quero listar, cadastrar, editar e excluir meus clie
 - Deletion uses an explicit confirmation step and is permanent; no undo or recovery flow is specified.
 - The platform may contain multiple photographers, but no team sharing or cross-account data sharing is included.
 - Session or authentication state is retained by the platform according to normal web application behavior until logout or expiration.
+- Work and session data belongs exclusively to the authenticated photographer and may not be shared across accounts.
+- A photographic work may optionally be associated with a client; a session may be associated with a client and, when applicable, a photographic work.
 
 ## Out of Scope
 
-- Session scheduling and appointment management.
-- Photographic work tracking and status management.
 - Dashboard metrics and business analytics.
 - Payments or financial management.
 - Photo upload, storage, or delivery.
