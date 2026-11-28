@@ -36,7 +36,7 @@
 - [x] T009 Create the reviewed `clients` table migration, including `Client.id`, `Client.user_id`, `Client.full_name`, `Client.email`, `Client.phone`, `Client.observations`, `Client.created_at`, and `Client.updated_at` constraints from `data-model.md`, in `supabase/migrations/<timestamp>_create_clients.sql`
 - [x] T010 Add select, insert, update, and delete RLS policies restricted to `auth.uid() = user_id` for the migration in `supabase/migrations/<timestamp>_create_clients.sql`
 - [x] T011 [P] Add the shared authenticated-route redirect behavior for missing or expired sessions in `lib/supabase/server.ts`
-- [ ] T012 [P] Add a reusable user-facing error/validation feedback component in `components/shared/FeedbackMessage.tsx`
+- [x] T012 [P] Add a reusable user-facing error/validation feedback component in `components/shared/FeedbackMessage.tsx`
 
 **Checkpoint**: Foundation ready. The Supabase schema, RLS, environment configuration, and route-session helpers must be reviewed before user-story work begins.
 
@@ -50,10 +50,10 @@
 
 ### Implementation for User Story 1
 
-- [ ] T013 [US1] Implement the public landing page and both access actions in `app/page.tsx`
-- [ ] T014 [P] [US1] Create a focused public navigation/header component in `components/landing/LandingHeader.tsx`
-- [ ] T015 [P] [US1] Add landing-page presentation and responsive call-to-action styles in `app/globals.css`
-- [ ] T016 [US1] Integrate optional authenticated-user redirect to `/clients` in `app/page.tsx`
+- [x] T013 [US1] Implement the public landing page and both access actions in `app/page.tsx`
+- [x] T014 [P] [US1] Create a focused public navigation/header component in `components/landing/LandingHeader.tsx`
+- [x] T015 [P] [US1] Add landing-page presentation and responsive call-to-action styles in `app/globals.css`
+- [x] T016 [US1] Integrate optional authenticated-user redirect to `/clients` in `app/page.tsx`
 
 **Checkpoint**: User Story 1 is fully usable independently and the landing page provides clear access to authentication flows.
 
