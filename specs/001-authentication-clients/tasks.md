@@ -67,14 +67,14 @@
 
 ### Implementation for User Story 2
 
-- [ ] T017 [US2] Implement the email/password sign-up form with email and password validation in `components/auth/SignupForm.tsx`
-- [ ] T018 [US2] Implement the `/signup` App Router page in `app/signup/page.tsx`
-- [ ] T019 [US2] Implement the email/password login form with invalid-credential feedback in `components/auth/LoginForm.tsx`
-- [ ] T020 [US2] Implement the `/login` App Router page in `app/login/page.tsx`
-- [ ] T021 [US2] Implement authenticated session termination and redirect behavior in `app/auth/signout/route.ts`
-- [ ] T022 [US2] Add protected-route session validation before rendering private content in `app/clients/page.tsx`
-- [ ] T023 [US2] Display duplicate-account and authentication failure feedback using the shared feedback component in `components/auth/SignupForm.tsx` and `components/auth/LoginForm.tsx`
-- [ ] T024 [US2] Add logout navigation to the private application shell in `app/clients/page.tsx`
+- [x] T017 [US2] Implement the email/password sign-up form with email and password validation in `components/auth/SignupForm.tsx`
+- [x] T018 [US2] Implement the `/signup` App Router page in `app/signup/page.tsx`
+- [x] T019 [US2] Implement the email/password login form with invalid-credential feedback in `components/auth/LoginForm.tsx`
+- [x] T020 [US2] Implement the `/login` App Router page in `app/login/page.tsx`
+- [x] T021 [US2] Implement authenticated session termination and redirect behavior in `app/auth/signout/route.ts`
+- [x] T022 [US2] Add protected-route session validation before rendering private content in `app/clients/page.tsx`
+- [x] T023 [US2] Display duplicate-account and authentication failure feedback using the shared feedback component in `components/auth/SignupForm.tsx` and `components/auth/LoginForm.tsx`
+- [x] T024 [US2] Add logout navigation to the private application shell in `app/clients/page.tsx`
 
 **Checkpoint**: User Story 2 is complete; unauthenticated users cannot render private routes and photographers can create, enter, and terminate sessions.
 
