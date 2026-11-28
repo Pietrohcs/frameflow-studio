@@ -1,9 +1,24 @@
-import { requireAuthenticatedUser } from "@/lib/supabase/server";
+import { FeedbackMessage } from "@/components/shared/FeedbackMessage";
+import { ClientList } from "@/components/clients/ClientList";
+import {
+  createSupabaseServerClient,
+  requireAuthenticatedUser,
+} from "@/lib/supabase/server";
+import type { Client } from "@/types/client";
 
 export const dynamic = "force-dynamic";
 
 export default async function ClientsPage() {
   const user = await requireAuthenticatedUser("/login");
+  const supabase = await createSupabaseServerClient();
+
+  const { data, error } = await supabase
+    .from("clients")
+    .select("id,user_id,full_name,email,phone,observations,created_at,updated_at")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false });
+
+  const clients = (data ?? []) as Client[];
 
   return (
     <main className="min-h-screen bg-slate-50">
@@ -28,10 +43,16 @@ export default async function ClientsPage() {
       </header>
 
       <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
-        <h1 className="text-3xl font-bold tracking-tight text-slate-950">Clientes</h1>
-        <p className="mt-2 text-slate-600">
-          Área protegida pronta para a gestão dos seus clientes.
-        </p>
+        {error ? (
+          <div className="mb-6">
+            <FeedbackMessage
+              message="Não foi possível carregar os clientes. Tente novamente."
+              type="error"
+            />
+          </div>
+        ) : null}
+
+        <ClientList clients={clients} />
       </section>
     </main>
   );

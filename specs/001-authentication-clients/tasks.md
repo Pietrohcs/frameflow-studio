@@ -88,14 +88,14 @@
 
 ### Implementation for User Story 3
 
-- [ ] T025 [US3] Define and implement owner-scoped client list querying in `app/clients/page.tsx` using the authenticated session and RLS
-- [ ] T026 [P] [US3] Create the reusable client list/table component in `components/clients/ClientList.tsx`
-- [ ] T027 [P] [US3] Implement create/edit form fields for `Client.full_name`, `Client.email`, `Client.phone`, and `Client.observations` with canonical constraints from `data-model.md` in `components/clients/ClientForm.tsx`
-- [ ] T028 [US3] Implement client creation, setting `Client.user_id` only from the authenticated identity and rejecting blank `Client.full_name` in `components/clients/ClientForm.tsx`
-- [ ] T029 [US3] Implement client editing for owned records while preserving immutable `Client.id` and `Client.user_id` in `components/clients/ClientForm.tsx`
-- [ ] T030 [US3] Implement explicit cancel/confirm deletion behavior in `components/clients/DeleteClientDialog.tsx`
-- [ ] T031 [US3] Connect confirmed deletion to the owned client record and refresh the owner list in `app/clients/page.tsx`
-- [ ] T032 [US3] Add owner-only empty, loading, validation, and operation feedback states in `app/clients/page.tsx` and `components/clients/ClientList.tsx`
+- [x] T025 [US3] Define and implement owner-scoped client list querying in `app/clients/page.tsx` using the authenticated session and RLS
+- [x] T026 [P] [US3] Create the reusable client list/table component in `components/clients/ClientList.tsx`
+- [x] T027 [P] [US3] Implement create/edit form fields for `Client.full_name`, `Client.email`, `Client.phone`, and `Client.observations` with canonical constraints from `data-model.md` in `components/clients/ClientForm.tsx`
+- [x] T028 [US3] Implement client creation, setting `Client.user_id` only from the authenticated identity and rejecting blank `Client.full_name` in `components/clients/ClientForm.tsx`
+- [x] T029 [US3] Implement client editing for owned records while preserving immutable `Client.id` and `Client.user_id` in `components/clients/ClientForm.tsx`
+- [x] T030 [US3] Implement explicit cancel/confirm deletion behavior in `components/clients/DeleteClientDialog.tsx`
+- [x] T031 [US3] Connect confirmed deletion to the owned client record and refresh the owner list in `app/clients/page.tsx`
+- [x] T032 [US3] Add owner-only empty, loading, validation, and operation feedback states in `app/clients/page.tsx` and `components/clients/ClientList.tsx`
 
 **Checkpoint**: User Story 3 is complete and independently testable for CRUD and cross-account isolation.
 
